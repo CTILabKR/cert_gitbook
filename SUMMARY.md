@@ -11,8 +11,9 @@
 
 * [인프라구성관리](secu\_operation/undefined.md)
 * [인프라계정관리](secu\_operation/undefined-1.md)
-* [작업및장애관리](secu\_operation/undefined-2.md)
-* [수집서버고도화작업](secu\_operation/undefined-3.md)
+* [🚚 작업및장애관리현황](secu\_operation/undefined-2.md)
+* [🚛 작업계획및결과](secu\_operation/undefined-3/README.md)
+  * [수집서버고도화작업](secu\_operation/undefined-3/undefined.md)
 * [메뉴얼](secu\_operation/undefined-4.md)
 
 ## 🐧 secu\_alalysis
