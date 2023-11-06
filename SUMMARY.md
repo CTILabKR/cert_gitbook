@@ -15,7 +15,7 @@
 * [🚛 작업계획및결과](secu\_operation/undefined-3/README.md)
   * [수집서버고도화작업](secu\_operation/undefined-3/undefined.md)
 * [📖 메뉴얼](secu\_operation/undefined-4.md)
-* [🔧 정기정검](secu\_operation/undefined-5.md)
+* [🔧 정기점검](secu\_operation/undefined-5.md)
 
 ## 🐧 secu\_alalysis
 
