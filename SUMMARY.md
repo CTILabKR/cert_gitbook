@@ -12,7 +12,7 @@
 * [인프라구성관리](secu\_operation/undefined.md)
 * [인프라계정관리](secu\_operation/undefined-1.md)
 * [작업및장애관리](secu\_operation/undefined-2.md)
-* [수집서버고도화작](secu\_operation/undefined-3.md)
+* [수집서버고도화작업](secu\_operation/undefined-3.md)
 * [메뉴얼](secu\_operation/undefined-4.md)
 
 ## 🐧 secu\_alalysis
@@ -23,5 +23,12 @@
 
 ## 💾 secu\_document
 
-* [신속확인제도](secu\_document/undefined.md)
-* [인증ISO27001](secu\_document/iso27001.md)
+* [인증](secu\_document/undefined/README.md)
+  * [신속확인제도](secu\_document/undefined/undefined.md)
+  * [ISO27001](secu\_document/undefined/iso27001.md)
+* [고객사](secu\_document/undefined-1/README.md)
+  * [LGU+IDaaS](secu\_document/undefined-1/lgu+idaas.md)
+  * [육군본부 ISP](secu\_document/undefined-1/isp.md)
+  * [사이버작전사령부 탐색체계](secu\_document/undefined-1/undefined.md)
+  * [국가보안기술연구소](secu\_document/undefined-1/undefined-1.md)
+  * [신한은행](secu\_document/undefined-1/undefined-2.md)
