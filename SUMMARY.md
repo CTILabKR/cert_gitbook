@@ -17,9 +17,11 @@
 
 ## 🐧 secu\_alalysis
 
-* [DTI 정오탐분석이벤트검토](secu\_alalysis/dti.md)
+* [DTI웹 취약점진단](secu\_alalysis/dti.md)
+* [DTI시스템 취약점진단](secu\_alalysis/dti-1.md)
+* [DTI 정오탐분석이벤트검토](secu\_alalysis/dti-2.md)
 
 ## 💾 secu\_document
 
-* [DTI시스템 취약점진단](secu\_document/dti.md)
-* [DTI웹 취약점진단](secu\_document/dti-1.md)
+* [신속확인제도](secu\_document/undefined.md)
+* [인증ISO27001](secu\_document/iso27001.md)
