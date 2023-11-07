@@ -13,7 +13,7 @@
 * [인프라계정관리](secu\_operation/undefined-1.md)
 * [🚚 작업및장애관리현황](secu\_operation/undefined-2.md)
 * [🚛 작업계획및결과](secu\_operation/undefined-3/README.md)
-  * [수집서버고도화작업](secu\_operation/undefined-3/undefined.md)
+  * [수집서버 고도화작업](secu\_operation/undefined-3/undefined.md)
 * [📖 메뉴얼](secu\_operation/undefined-4.md)
 * [🔧 정기점검](secu\_operation/undefined-5.md)
 
