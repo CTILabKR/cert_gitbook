@@ -27,11 +27,21 @@
 
 **pcap 파서 개발 (오프소스 활용)**
 
+{% embed url="https://github.com/fluent/fluent-bit" %}
+
+{% embed url="https://github.com/enukane/fluent-plugin-pcapng" %}
+
+{% embed url="https://github.com/topics/pcap-parser" %}
+
 
 
 Fleunt Bit 설치 및 셋팅
 
 Fleunt Bitdmf 찾게 된 이유는 모니터링 오프소스 중 리얼타임 로그를 얻기 위한 수집기를 찾던중에 Fleunt Bit을 찾게 되었으며, 시스템 정보들이나 로그들을 리얼타임으로 얼마나 가볍게 빠르고 정확하게 모아서 쌓는가가 초점임. 또한 pcap, Tcpdump 파일형태의 패킷을 실시간 로그를 얻기 위함이다.
+
+fluentbit은 내부적으로 input, filter, output, router 등 다양한 설정이 존재하고 이를 조정하여 다양한 기능을 수행할 수 있음.
+
+
 
 공식사이트 : [https://fluentbit.io/](https://fluentbit.io/)
 
@@ -104,4 +114,10 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
 
 
+
+
+
+테스트 환경 구축 및 테스트 진행
+
+* 업무용 노트북에 가상 환경 구축하여 테스트 진행 예정
 
