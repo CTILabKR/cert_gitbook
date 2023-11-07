@@ -6,3 +6,9 @@ coverY: 0
 
 # DTI 정오탐분석이벤트검토
 
+보안이벤트
+
+{% embed url="https://drive.google.com/drive/folders/1xHrfhSkKSYsSk6t4VY4HFZOfvNoP4xY6" %}
+&#x20;보안이벤트 분석폴더
+{% endembed %}
+
