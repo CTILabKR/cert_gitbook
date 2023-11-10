@@ -49,7 +49,7 @@ fluentbit은 내부적으로 input, filter, output, router 등 다양한 설정�
 
 
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 지원플랫폼
 
