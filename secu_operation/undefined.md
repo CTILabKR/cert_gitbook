@@ -8,7 +8,7 @@ coverY: 0
 
 ### (@베스트) ML\_pipeline\_테스트 데이터셋  요구사항 정리
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 현재(23.11) 파이프라인  관련하여 운영 방식.&#x20;
 
