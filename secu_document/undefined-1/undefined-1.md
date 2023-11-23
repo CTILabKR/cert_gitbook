@@ -30,21 +30,187 @@
 
 
 
-## 05) SMTP 프로토콜 공격유형
+## 05) SMTP 보안
 
 {% embed url="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/10-Testing_for_IMAP_SMTP_Injection" %}
 
-### 시스템이 악의 있거나 요청하지 않은 메일(스팸)의 공격을 받지 않도록 방지하려면 SMTP(Simple Mail Transfer Protocol) 액세스를 제어해야 합니다.
+이메일 주소 구조는 로컬파트와 @(At), 도메인으로 구성되어 있다.
 
-SMTP 클라이언트가 시스템에 액세스할 수 있도록 허용하려면 아래의 태스크를 수행하여 시스템을 공격으로부터 보호해야 합니다.
+```
+이메일 주소 : foobar@gmail.com
 
-* 가능한 경우, 시스템 분배 디렉토리에서 \*ANY \*ANY 항목을 사용하지 마십시오. 시스템에 \*ANY \*ANY 항목이 없으면 누군가가 SMTP를 사용하여 시스템 또는 네트워크를 압도하는 시도를 하기가 더 어렵습니다. 사용자의 보조 기억장치가 사용자의 시스템을 통해 다른 시스템으로 라우트되는 원하지 않는 메일로 채워지면 사용자의 시스템 또는 네트워크가 압도됩니다.
-* 보조 기억장치 풀(ASP)에 적절한 임계 제한을 설정하여 원하지 않는 오브젝트로 시스템이 압도되지 않도록 사용자를 보호하십시오. 시스템 서비스 툴(SST) 또는 전용 서비스 툴(DST)을 사용하여 ASP의 임계값을 표시하고 설정할 수 있습니다.
-* \*SDD 디렉토리 유형에 대해 사전시작 작업 항목 변경(CHGPJE) 명령을 사용하여 작성할 수 있는 사전시작 작업의 최대 수를 조정하십시오. 이에 따라 서비스 공격 거부 중에 작성되는 작업의 수가 제한됩니다. 최대 임계값의 디폴트는 256입니다.
-* \*SMTP 및 \*SMTPMSF 디렉토리 유형에 대해 SMTP 등록정보 패널의 옵션을 통해 송신할 수 있는 전자 우편의 최대 수를 조정하십시오.
-* 릴레이와 연결을 제한하면 외부인이 사용자의 연결을 사용하여 요청하지 않은 전자 우편(스팸)을 송신하지 못하도록 방지할 수 있습니다.
-* i 6.1 이상을 실행하는 시스템에서는 인증이 전자 우편을 송신하도록 요구하여 스팸을 방지할 수 있습니다. 리모트 서버에서 인증을 요구하는 경우, 사용자는 사용자의 로컬 서버에 인증을 설정할 수 있습니다.
-* i 7.2 이상을 실행 중인 시스템에서는 SSL/TLS가 인증을 사용하도록 요구할 수 있습니다. 더 이전의 릴리스에서는 인증 없이 SSL/TLS를 허용하지 않습니다. 또한 SSL/TLS 전용 포트를 작동 불가능으로 만들 수도 있습니다.
+로컬 파트 : foobar
+
+도메인 : gmail.com
+```
+
+SMTP는 인터넷을 통해 이메일을 발송하고 수신하기 위한 프로토콜(Protocol)이다. SMTP는 텍스트 기반의 프로토콜이기 때문에 구조가 간단하며 읽기 쉽다.
+
+아래 통신예시에서 발송 서버는 'C', 수신 서버는 'S'이다.
+
+```
+C: telnet www.example.com 25
+S: 220 smtp.example.com ESMTP Postfix
+C: HELO relay.example.com
+S: 250 smtp.example.com, I am glad to meet you
+C: MAIL FROM:<bob@example.com>              <-- (1)
+S: 250 Ok
+C: RCPT TO:<alice@example.com>
+S: 250 Ok
+C: DATA                                     <-- (2)
+S: 354 End data with <CR><LF>.<CR><LF>
+C: From: "Bob" <bob@example.com>    <-- (3)
+C: To: Alice <alice@example.com>
+C: Date: Tue, 15 January 2008 16:02:43 -0500
+C: Subject: Test message
+C: 
+C: Hello Alice.
+C: This is a test message with 5 header fields and 4 lines in the message body.
+C: Your friend,
+C: Bob
+C: .
+S: 250 Ok: queued as 12345
+C: QUIT                                     <-- (4)
+S: 221 Bye
+```
+
+편지를 봉투에 넣어 보내는 것처럼 SMTP에도 편지와 봉투로 구성된다. (편지: Letter, 봉투: Envelope)
+
+* 위의 통신에서 (1)에서 (2)까지 봉투, (3)에서 (4)까지가 편지 부분이라 볼 수 있다.
+* 봉투는 메일을 읽는 수신자에게 전달되지 않는다. 따라서 **수신자는 봉투의 내용을 확인할 수 없다.**
+* 위에서 발신자 주소는 두번등장한다. `MAIL FROM`, `FROM` 두 발신자 주소는 수신 서버에서 각기 다르게 사용된다.
+  * `MAIL FROM`는 **SPF 인증에서 사용된다.** 일반적으로 편지의 헤더인 Return-Path 주소로 추가되어 반송 메일을 수신하는 주소로 사용된다.
+  * `FROM`은 수신자가 메일을 읽을 때 볼 수 있는 주소이다. **DKIM 인증에서 사용된다.**
+* `MAIL FROM`, `FROM`는 일치하지 않아도 된다. 예를 들면, 실제 발신자 주소와 다른 반송 메일만 수신하는 이메일 주소를 MAIL FROM에 설정해 모든 반송 메일을 하나의 이메일로 수집하고 처리할 수 있다.
+* 편지(Letter)에 적혀있는 `To`와 봉투(Envelope)에 적혀있는 `To`는 다를 수 있다. 예를 들어 cc 혹은 bcc인 사람에게 메일을 보내야 할 때 편지의 `To`는 모두 동일하지만 봉투에 적혀 있는 `To`는 cc혹은 bcc의 메일 주소가 적혀있을 수 있다는 것이다.
+
+## 이메일 스푸핑
+
+```
+이메일 스푸핑은 피해자가 신뢰할 수 있는 인물, 웹 사이트, IP, 이메일 주소 등으로 위장하는 것이다.
+
+// NHN의 설명 글에서 가져왔습니다. (https://meetup.toast.com/posts/244)
+C: telnet www.example.com 25
+S: 220 smtp.example.com ESMTP Postfix
+C: HELO relay.example.com
+S: 250 smtp.example.com, I am glad to meet you
+C: MAIL FROM:<bob@trust.com>    <-- 실제로는 'spoofing.com'이지만, 'trust.com'이라고해서 수신 서버를 속임
+S: 250 Ok
+C: RCPT TO:<alice@example.com>
+S: 250 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+C: From: "Bob" <bob@trust.com>  <-- 같은 방법으로 수신자를 속임
+C: To: Alice <alice@example.com>
+...
+```
+
+## 이메일 발송 SMTP 서버 위조
+
+```
+MAIL FROM에 실제와 다른 신뢰할만한 발신자 주소를 입력해 이메일 수신 SMTP 서버를 속이는 공격이다.
+
+수신 서버가 속아 스푸핑 된 이메일을 수신자에게 전달하면, 수신자는 속아 피싱이나 파밍, 바이러스에 감염될 수 있다. SPF로 예방을 할 수 있지만 완벽하지 않아 DKIM, DMARC까지 적용해야 안전하다.
+```
+
+## 발신자 주소 위조
+
+```
+FROM에 실제와 다른 수신자가 신뢰할만한 발신자 주소를 입력해 수신자를 속이는 공격방법이다. SPF로 막을 수 없으며, DKIM과 DMARC까지 적용해야 안전하다.
+```
+
+
+
+SPF (Sender Policy Framework)
+
+SPF 레코드라고 부르는 이메일 발송 SMTP서버 정보를 **이메일 발송 도메인 DNS(Domain Name Server)에 등록하고 이메일 수신 SMTP서버가 DNS에 공개된 IP정보에 실제 메일을 발송한 SMTP 서버의 IP가 속한지 확인하는 인증 기술이다.**
+
+즉 메일을 실제로 보내는 발송서버의 IP와 DNS에 등록되어 있는 해당 도메인의 공개 IP와 비교하여 검증하는 인증방법이다.
+
+
+
+SMTP 송신 서버에서 수신서버로 보낼 때 흐름은 아래와 같다.\
+\
+![](../../.gitbook/assets/image.png)
+
+1. 먼저 발신 서버의 SPF 레코드를 DNS에 등록을 합니다.
+2. 발신 서버에서 메일을 수신서버로 전송을 합니다.
+3. 수신서버는 `MAIL FROM`의 SPF 레코드를 DNS서버를 통해 조회 합니다.
+4. 조회된 결과와 발신 서버의 IP와 비교하여 이 후 처리를 하게 됩니다.
+
+SPF의 한계
+
+```
+SPF를 이용해 발송 서버 스푸핑을 막을 수 있었다. 하지만 공격자가 SPF 레코드가 등록된 도메인을으로 MAIL FROM을 변조하면 수신 서버는 SPF 레코드를 확인해보고 발송 서버를 신뢰하게 된다.
+
+// NHN의 설명 글에서 가져왔습니다. (https://meetup.toast.com/posts/244)
+C: telnet www.example.com 25
+S: 220 smtp.example.com ESMTP Postfix
+C: HELO relay.example.com
+S: 250 smtp.example.com, I am glad to meet you
+C: MAIL FROM:<bob@spoofing.com>    <-- SPF 레코드가 등록된 From과 다른 도메인을 사용
+S: 250 Ok
+C: RCPT TO:<alice@example.com>
+S: 250 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+C: From: "Bob Example" <bob@trust.com>  <-- 수신자는 MAIL FROM이 아닌 From을 보기때문에 속을 수 있음
+C: To: Alice Example <alice@example.com>
+...
+
+공격을 막기 위해서는 MAIL FROM과 From을 비교하고 이메일 내용이 위조 되지 않았는지 확인하는 인증 방법이 필요하기에 등장을 하게 되는 것이 DKIM 및 DMARC이다.
+```
+
+
+
+## DKIM
+
+DKIM은 이메일 인증 방법 중 하나로 **수신 서버에서 수신된 이메일이 위변조 되지 않았는지 디지털 서명을 이용해 검증하는 기술이다.**
+
+발신 서버는 이메일 발송 시 이메일 발송자, 수신자, 제목, 내용 등을 **비밀 키로 서명한 후 이 서명 값을 DKIM-Signature 헤더에 추가한다.**
+
+수신 서버는 DKIM-Signature헤더 내 도메인 (d=) **DNS에 공개된 공개 키와 서명 알고리즘 정보 등이 담긴 DKIM 레코드를 조회한 후 이 값들을 이용해 수신된 이메일 DKIM-Signature 헤더의 디지털 서명을 검증한다.**\
+
+
+![](<../../.gitbook/assets/image (1).png>)
+
+1. 발신서버에서 메일을 보낼 때 발신자, 수신자, 제목, 내용 등을 비밀 키로 서명을 한다.
+2. 서명 값을 DKIM-Signature 헤더에 추가하여 메일을 발송
+3. 수신 서버는 DKIM-Signature 헤더 안에 있는 도메인을 가지고 DNS서버에 공개된 공개 키와 서명 알고리즘을 통해 DKIM 레코드를 조회하고 이 값들을 이용하여 DKIM-Signature 서명을 검증.
+
+## DKIM의 인증 한계 <a href="#dkim" id="dkim"></a>
+
+DKIM 인증 시 DKIM-Signature의 도메인을 사용하기 때문에 여전히 `From`를 위조한 이메일 스프핑 공격을 막기에는 부족하다.
+
+DKIM은 **이메일 내용의 위변조 여부를 인증할 뿐 DKIM-Signature 도메인과 `MAIL FROM`의 관계는 검증하지 않는다.**
+
+DKIM의 인증 한계에 대한 예제이다.
+
+```
+C: telnet www.example.com 25
+S: 220 smtp.example.com ESMTP Postfix
+C: HELO relay.example.com
+S: 250 smtp.example.com, I am glad to meet you
+C: MAIL FROM:<bob@spoofing.com>    <-- SPF 레코드가 등록된 From과 다른 공격자 도메인을 사용
+S: 250 Ok
+C: RCPT TO:<alice@example.com>
+S: 250 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+C: DKIM-Signature: v=1; a=rsa-sha256; d=spoofing.com; s=brisbane; <-- 공격자 도메인과 지정자
+      c=simple; q=dns/txt; i=@eng.example.net;
+      t=1117574938; x=1118006938;
+      h=from:to:subject:date;
+      bh=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=;
+      b=dzdVyOfAKCdLXdJOc9G2q8LoXSlEniSbav+yuU4zGeeruD00lszZVoG4ZHRNiYzR
+C: From: "Bob Example" <bob@trust.com>  <-- 수신자는 MAIL FROM이 아닌 From을 보기때문에 속을 수 있음
+C: To: Alice Example <alice@example.com>
+...
+```
+
+이러한 공격을 막기 위해 DMARC를 이용하며 DMARC는 SPF, DKIM 얼라인먼트(Alignment)라는 기능을 사용한다.
+
+DMARC는 **DKIM-Signature의 도메인과 MAIL FROM, From의 관계를 검증하기 때문에 위와 같은 공격을 막을 수 있다.**
 
 
 
