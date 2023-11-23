@@ -34,6 +34,12 @@
 
 {% embed url="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/10-Testing_for_IMAP_SMTP_Injection" %}
 
+{% embed url="https://net123.tistory.com/518" %}
+
+{% embed url="https://www.hahwul.com/cullinan/email-injection/" %}
+
+
+
 이메일 주소 구조는 로컬파트와 @(At), 도메인으로 구성되어 있다.
 
 ```
