@@ -37,11 +37,11 @@ fluentbit은 내부적으로 input, filter, output, router 등 다양한 설정�
 
 공식메뉴얼 : [https://docs.fluentbit.io/manual/](https://docs.fluentbit.io/manual/)
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 지원플랫폼
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 CentOS 패키지 설치 참조
 

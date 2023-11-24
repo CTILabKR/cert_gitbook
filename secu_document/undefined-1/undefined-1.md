@@ -143,7 +143,7 @@ SPF 레코드라고 부르는 이메일 발송 SMTP서버 정보를 \
 
 SMTP 송신 서버에서 수신서버로 보낼 때 흐름은 아래와 같다.\
 \
-![](../../.gitbook/assets/image.png)
+![](<../../.gitbook/assets/image (3).png>)
 
 1. 먼저 발신 서버의 SPF 레코드를 DNS에 등록을 합니다.
 2. 발신 서버에서 메일을 수신서버로 전송을 합니다.
@@ -190,7 +190,7 @@ DKIM은 이메일 인증 방법 중 하나로 \
 **수신된 이메일 DKIM-Signature 헤더의 디지털 서명을 검증한다.**\
 
 
-![](<../../.gitbook/assets/image (1).png>)
+![](<../../.gitbook/assets/image (1) (1).png>)
 
 1. 발신서버에서 메일을 보낼 때 발신자, 수신자, 제목, 내용 등을 비밀 키로 서명을 한다.
 2. 서명 값을 DKIM-Signature 헤더에 추가하여 메일을 발송
