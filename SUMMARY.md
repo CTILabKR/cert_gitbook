@@ -12,7 +12,7 @@
 ## 👀 secu\_operation
 
 * [👨💻 인프라 및 파이프라인 구성관리](secu\_operation/undefined.md)
-* [인프라계정관리](secu\_operation/undefined-1.md)
+* [🔑 인프라계정관리](secu\_operation/undefined-1.md)
 * [🚚 작업및장애관리현황](secu\_operation/undefined-2.md)
 * [🚛 작업계획및결과](secu\_operation/undefined-3/README.md)
   * [수집서버 고도화작업](secu\_operation/undefined-3/undefined.md)
