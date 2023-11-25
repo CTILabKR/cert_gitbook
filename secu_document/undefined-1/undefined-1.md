@@ -32,6 +32,12 @@
 
 ## 05) SMTP 보안
 
+
+
+허니팟 구성 : 메일서버 구축 (Docker 기반) 하기  + 그누보드, 라이믹스, 워드프레스 연결하기  [CTILAB ORG](http://127.0.0.1:5000/u/arkk37VbsDMtxxYU6SwCiDTyjrC2 "mention")
+
+{% embed url="https://www.wsgvet.com/home/677" %}
+
 {% embed url="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/10-Testing_for_IMAP_SMTP_Injection" %}
 
 {% embed url="https://net123.tistory.com/518" %}
