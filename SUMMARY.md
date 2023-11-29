@@ -24,15 +24,3 @@
 * [DTI웹 취약점진단](secu\_alalysis/dti.md)
 * [DTI시스템 취약점진단](secu\_alalysis/dti-1.md)
 * [DTI 정오탐분석이벤트검토](secu\_alalysis/dti-2.md)
-
-## 💾 secu\_document
-
-* [인증](secu\_document/undefined/README.md)
-  * [신속확인제도](secu\_document/undefined/undefined.md)
-  * [ISO27001](secu\_document/undefined/iso27001.md)
-* [고객사](secu\_document/undefined-1/README.md)
-  * [LGU+IDaaS](secu\_document/undefined-1/lgu+idaas.md)
-  * [육군본부 ISP](secu\_document/undefined-1/isp.md)
-  * [사이버작전사령부 탐색체계](secu\_document/undefined-1/undefined.md)
-  * [신한은행](secu\_document/undefined-1/undefined-2.md)
-* [동향](secu\_document/undefined-2.md)
