@@ -1,2 +1,2 @@
-# \[cert_gitbook]
+# [cert_gitbook]
 
