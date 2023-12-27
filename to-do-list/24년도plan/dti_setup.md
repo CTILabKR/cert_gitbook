@@ -52,12 +52,30 @@
         * Prediction mode : 
     * ESOINN 기반의 이상 탐지 모델 DTI 적용
         * Train model process
+            * 필수 패키지 import
+            * 데이터 생성
+            * 학습데이터와 검증데이터 생성
+            * 학습
         * Prediction model process
+            * 필수 패키지 import
+            * 데이터 생성
+            * 예측데이터 생성
+            * 예측
     * XAI for Esoinn
         * Esoinn에 XAI 적용
             * Tf-idf 전처리된 string data 경우
+                 분석하려는 data index 설정
+                 feature model load
+                 load된 모델에서 feature numpy arraylist 설정
+                 xai_esoinn()로 feature 간 거리계산
             * EXCEL 형태의 data 경우
+                분석하려는 data index 설정
+                xai_esoinn()로 feature간 거리계산
+            * XSS 공격에 대해 학습한 모델은 anormaly로 예측 > xai_esoinn()로 feature간 거리계산 > Datafram 으로 반환
         * Esoinn에 적용된 XAI 로직
+            * xai_esoinn() 로직
+            * explain_anomaly() : anomaly로 예측된 입력에 대한 분석
+            * get_diff_by_feat() : 입력 signal과 가장 가까운 노드와 비교(normal과 공격으로 분류된 signal)
     * Trouble shooting
         * Esoinn의 속도 문제
             * Esoinn 학습/예측 시 입력 데이터 feature 갯수 조정
