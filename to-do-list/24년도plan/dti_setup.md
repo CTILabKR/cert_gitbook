@@ -139,6 +139,54 @@
     * dti_ts_result : Threat Scoring 결과를 기록
 
 ## Docker기반 개발 환경 정의서
+    * 개발 컨테이너 구축방법
+        A. Jupyter lab 이미지 다운로드 
+            $ docker pull tensorflow/tensorflow:latest-gpu-jupyter
+        B. 다운로드 받은 이미지 확인 
+            $ docker images | grep tensorflow/tensorflow
+        C. 개발 컨테이너 업로드 
+            $ docker run -it -d -v /home/ctilab:/ctilab -p 9900:9900 --name "based" tensorflow/tensorflow:latest-gpu-juptrer --restart always --gpus all /bin/bash
+        D. 개발 컨테이너 접속 및 파이썬 라이브러리 설치 
+            $ docker exec -it based /bin/bash
+        E. 컨테이너 환경 설정(접속 포트 및 config)
+            $ apt-get install vim -y
+            $ vim /root/.jupyter/jupyter_notebook_config.py
+            
+            아래의 옵션 추가
+            c.NotebookApp.ip='*'
+            c.NotebookApp.port=PORT
+            c.NotebookApp.open_browser=False
+            c.NotebookApp.notebook_dir='PATH'
+            
+            * PORT에는 Jupyter lab의 접속 포트를 정의
+            * PATH에는 Jupyter lab의 홈(home) 디렉토리를 정의
+
+        F. 개발 컨테이너 이미지 커밋(commit)
+            $ docker ps | grep based
+            $ docker commit CONTAINER_ID IMAGE_NAME:TAG_NAME
+            
+            * CONTAINER_ID는 상기 이미지 기준으로 02840ef02736이다. (컨테이너 업로드 때 마다 달라짐)
+            * IMAGE_NAME은 커밋(commit)하고자 하는 이미지 이름을 정의 (예: jupyter-lab)
+            * TAG_NAME은 커밋(commit)하고자 하는 이미지에 별칭을 부여 (예: oliver)
+            
+            예시) $ docker commit a112bf50373b jupyter-lab:oliver
+
+    부록 1. 컨테이너 중단
+            $ docker stop CONTAINER_ID 또는 $ docker stop IMAGE_NAME:TAG_NAME
+    부록 2. 컨테이너 제거
+            $ docker rm CONTAINER_ID 또는 $ docker rm IMAGE_NAME:TAG_NAME
+            (단, 컨테이너 삭제 전에 반드시 컨테이너가 동작하지 않는 상태이어야 함.)
+    * 설치 라이브러리 정보
+        * Python 3.8.10 사용
+    * 개발 컨테이너 보유 현황
+        *  Dougie 컨테이너에만 PyTorch(only CPU)가 설치되어 있으니 유의할 것.
+	    - $ pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org    /whl/cpu
+
+        * PyTorch GPU 버전이 필요한 경우에는, 아래의 명령어를 이용하여 설치할 것.
+	    - $ pip3 install torch torchvision torchaudio
+	        설치 후, Python에서 “undefined symbol: cublasLtGetStatusString, version libcublasLt.so.11"  
+            에러 발생 시, 아래 명령어를 실행하여 PyTorch 다운그레이드 필요.
+	    - $ pip3 install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f  https://download.pytorch.org/whl/torch_stable.html
 
 ## DTI.ai 셋업 매뉴얼
 
