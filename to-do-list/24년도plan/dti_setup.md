@@ -116,6 +116,27 @@
         * 분석 대상 src_ip가 black list와 white list에 모두 포함되어 있는 경우에는 해당 src_ip를 ‘추가 검증 대상 ip’로 지정하고 알람을 띄우며, Black list에만 포함되어 있을 경우에는 100의 점수를 부여하고 White list에만 포함되어 있을 경우에는 0의 점수를 부여한다. 만약 scr_ip가 black list와 white list에 모두 포함되지 않는 경우에는 Threat Scoring 알고리즘을 적용하여 Threat Scoring 알고리즘 계산법에 따라 해당 src_ip에 스코어를 부여한다. 이때 각 속성 별 계산된 점수의 최소 값은 0, 최대 값은 1이다. 또한 속성 총 개수가 6개이므로 최대 점수는 6으로 나오게 된다. 위 단계를 거쳐 최종적으로 분석 대상 src_ip에 대한 최종점수가 사용자에게 표시된다.
 
 ## DTI.ai clickhouseDB 테이블 정의서
+    * train_collect_number
+    * train_collect_string
+    * train_collect_category
+    * train_prep_number
+    * train_prep_string_*
+    * train_prep_category
+    * cnn_train_history
+    * esoinn_train_history
+    * pred_collect_number
+    * pred_collect_string
+    * pred_collect_category
+    * pred_prep_number
+    * pred_prep_string_*
+    * pred_prep_category
+    * pred_01_result
+    * pred_esoinn_result
+    * pred_esoinn_plot
+    * pred_result : ESOINN, CNN 모델의 예측 결과를 종합한 결과 기록
+    * cnn_xai_result : CNN 모델의 XAI 결과를 기록
+    * esoinn_xai_result : ESOINN 모델의 XAI 결과를 기록
+    * dti_ts_result : Threat Scoring 결과를 기록
 
 ## Docker기반 개발 환경 정의서
 
