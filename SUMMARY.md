@@ -16,3 +16,4 @@
   * [요약(12/18 \~ 12/22)](to-do-list/23-12/12-18-12-22.md)
 * [\[24년도 업무추진\]](to-do-list/24/README.md)
   * [계획](to-do-list/24년도plan/24-plan01.md)
+  * [dti setup](to-do-list/24년도plan/dti_setup.md)
