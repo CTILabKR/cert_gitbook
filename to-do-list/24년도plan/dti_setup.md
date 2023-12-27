@@ -46,9 +46,18 @@
     * 설치 라이브러리 정보(for ESOINN)
         * DTI용 라이브러리가 모두 설치된 환경에서 ESOINN을 위한 추가 라이브러리 없음. 
     * ESOINN 로직
-        * 입력 데이터 간의 거리 와 기하학적 유사성 을 기반으로 그룹화하여 정상/비정상을 구분하고, 
+        * Abstract : 입력 데이터 간의 거리 와 기하학적 유사성 을 기반으로 그룹화하여 정상/비정상을 구분하고, 
           그룹화되지 않고 알려지지 않은 (위협) 데이터는 노이즈로 분류하여 이상 행위를 탐지
-
+        * Train mode : 
+        * Prediction mode : 
+    * ESOINN 기반의 이상 탐지 모델 DTI 적용
+        * Train model process
+        * Prediction model process
+    * XAI for Esoinn
+        * Esoinn에 XAI 적용
+            * Tf-idf 전처리된 string data 경우
+            * EXCEL 형태의 data 경우
+        * Esoinn에 적용된 XAI 로직
     * Trouble shooting
         * Esoinn의 속도 문제
             * Esoinn 학습/예측 시 입력 데이터 feature 갯수 조정
