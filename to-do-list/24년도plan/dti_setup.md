@@ -189,6 +189,23 @@
 	    - $ pip3 install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f  https://download.pytorch.org/whl/torch_stable.html
 
 ## DTI.ai 셋업 매뉴얼
+    * 개념 증명(Proof Of Concept, PoC) (이하 PoC)에서 AI 모델을 생성하기 위한 환경 설정 값(config)을 추가 또는 변경해야 한다. 빠른 이해를 돕기 위해 PoC(X번) 서버(211.115.206.X)를 이용하여 설정 과정을 안내한다.
+
+    * Airflow 설정
+
+    * Python scripts 수정
+
+    * 기타, 보안장비 로그
+        *  PoC에서 보안장비 로그를 수신하는 방법으로 rsyslog를 활용하여 수신을 했기 때문에 
+        rsyslog 설정 및 활성화를 하여 syslog 수신을 원하는 디렉토리, 파일명을 가진 형태로 수신할 수 있도록 변경하고자 한다.
+
+        * syslog를 설정하기 위해서는 /etc/rsyslog.conf 파일의 내용을 수정 및 추가해야 한다.
+
+        A. rsyslog.conf 파일은 관리자 권한을 갖고 있어야 수정이 가능하기 때문에, 관리자 권한으로 파일 오픈한다.
+        B. ①번 $ModLoad imudp, $UDPServerRun 주석을 해제하고,②번$ModLoad imklog 명령어를 추가한다.③번의 경우에는 수신받는 syslog를 원하는 디렉토리에 지정한 파일 포맷으로 수신받는 방법이다.
+        C. rsyslog.conf 데몬 설정 파일을 저장하고, 서비스를 재시작하여 변경 내용을 적용한다.
+        D. ①번 systemctl status rsyslog 명령어를 입력하여 rsyslog 서비스의 상태를 확인하고,②번과 같이 “active (running)” 상태까지 확인해야 한다.
+
 
 ## DTI.ai Customize 수행 메뉴얼
 
