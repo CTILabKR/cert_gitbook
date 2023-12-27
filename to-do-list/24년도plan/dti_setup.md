@@ -56,11 +56,29 @@
             * 데이터 생성
             * 학습데이터와 검증데이터 생성
             * 학습
+        * DB 설정
+            “db_name” : DB 명
+            “table_number” : numeric data 저장
+            “table_stringr” : string data 저장
+            “table_category” : category data 저장
+            “prep_table_number” : numeric data 전처리 결과 저장 (IntProcessing 클래스 결과)
+            “prep_table_stringr” : string data 전처리 결과 저장 (StrProcessing 클래스 결과)
+            “prep_table_category” : category data 전처리 결과 저장 (CatProcessing 클래스 결과)
         * Prediction model process
             * 필수 패키지 import
             * 데이터 생성
             * 예측데이터 생성
             * 예측
+        * DB 설정
+            “db_name” : DB 명
+            “table_number” : 예측 위한 numeric data 저장
+            “table_stringr” : 예측 위한 string data 저장
+            “table_category” : 예측 위한 category data 저장
+            “prep_table_number” : 예측 위한 numeric data 전처리 결과 저장 (IntProcessing 클래스 결과)
+            “prep_table_stringr” : 예측 위한 string data 전처리 결과 저장 (StrProcessing 클래스 결과)
+            “prep_table_category” : 예측 위한 category data 전처리 결과 저장 (CatProcessing 클래스 결과)
+            “esoinn_result_table” : 예측 결과 저장 
+            “esoinn_xai_table” : esoinn XAI 결과 저장 
     * XAI for Esoinn
         * Esoinn에 XAI 적용
             * Tf-idf 전처리된 string data 경우
