@@ -2,7 +2,7 @@
 
 ## 🏁 TO do list
 
-* [24년도 업무추진]
+* [24년도 업무 계획]
   * [계획](to-do-list/24년도plan/24-plan01.md)
   * [dti setup](to-do-list/24년도plan/dti_setup.md)
 
