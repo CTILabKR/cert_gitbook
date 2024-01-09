@@ -77,3 +77,24 @@
 <figure><img src="../../.gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
+
+
+
+### nhn cloud 참고자료, Criminal IP for FDS
+
+별도의 로그 시스템 없이 결제 또는 회원가입, 로그인을 필요로 하는 서비스에 실시간으로 접속하는 모든 IP 주소 이상 여부를 식별합니다.
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+* 접속 IP 주소 실시간 로그 모니터링
+* 접속 IP 주소 위협 스코어링
+* 접속 IP 주소 위치 정보
+* Blacklist IP 식별
+* VPN IP 식별
+* 클라우드 IP 식별
+* 서버 IP 식별
+* Tor, Proxy IP 식별
+
+
+
+{% embed url="https://www.nhncloud.com/jp/marketplace/security/criminal-ip-for-fds?lang=ko" %}
