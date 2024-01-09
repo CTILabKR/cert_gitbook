@@ -34,6 +34,14 @@
 
 <figure><img src="../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
 
+### 사이버 위협 시각화 정보를 통한 위협 확인 (예시)
+
+<figure><img src="../../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
+
+### 가산화와 AI를 통한 프로파일링(예시)
+
+<figure><img src="../../.gitbook/assets/image (63).png" alt=""><figcaption></figcaption></figure>
+
 
 
 ## K사 N시스템 위협스코어링&#x20;
@@ -53,6 +61,10 @@
 
 
 <figure><img src="../../.gitbook/assets/image (61).png" alt=""><figcaption></figcaption></figure>
+
+기존 경보를 통한 대응 시간과 가산화 기능을 통한 대응 시간 (예시)
+
+<figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
 
 
 
