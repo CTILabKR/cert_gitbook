@@ -17,5 +17,6 @@
   * [계획](to-do-list/24년도plan/24-plan01.md)
   * [dti setup](to-do-list/24년도plan/dti\_setup.md)
   * [MiTRE](to-do-list/24년도plan/MITRE01.md)
+  * [Threat Scoring](to-do-list/24년도plan/Threat Scoring.md)
 * [\[24년01월\]](to-do-list/24-01/README.md)
   * [요약(01/01 \~ 01/05)](to-do-list/24-01/01-01-01-05.md)
