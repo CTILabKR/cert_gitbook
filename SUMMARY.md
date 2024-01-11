@@ -20,4 +20,4 @@
   * [Threat Scoring](to-do-list/24/threat-scoring.md)
 * [24년01월](to-do-list/24-01/README.md)
   * [요약(01/01 ~ 01/05)](to-do-list/24-01/01-01-01-05.md)
-  * [요약(01/08 ~ 01/11)](to-do-list/24-01/01-08-01-12.md)
+  * [요약(01/08 ~ 01/12)](to-do-list/24-01/01-08-01-12.md)
