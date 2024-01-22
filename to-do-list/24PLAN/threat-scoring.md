@@ -58,7 +58,9 @@
 
 ## 국가보안기술연구소 위협스코어링
 
+<figure><img src="../../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
 
